@@ -1,0 +1,9 @@
+const a = function(x,y,z){
+    return x,y,z, true //逗号表达式，结果返回最后一个参数的值
+}
+
+console.log(a(...[1,2,3])) //三点为解构
+
+// 箭头函数 "(x)"这个为函数的参数,只能为单个参数，"x"为函数语句块。如有多条语句块时需使用"{}"包起来
+const b = (x)=>  x
+console.log(b(2))

@@ -1,0 +1,84 @@
+//类定义
+// class Seralization {
+//     constructor() {
+//         console.log('Seralization ~~~~~~~~~~')
+//         if (typeof(this.stringify) !== 'function'){
+//             throw new ReferenceError('should define stringify')
+//         }
+//     }
+// }
+
+//继承 super是当前对象的原型对象 
+// class Point extends Seralization {
+//     constructor(x,y) {
+//         console.log('Point -------------------')
+//         super()
+//         this.x = x
+//         this.y = y
+
+//     }
+//     stringify () {}
+// }
+
+// p1 = new  Point(3,4)
+
+// const B = class extends Point{
+//     constructor(x,y,z){
+//         super(x,y);
+//         this.z = z;
+//     }
+// }
+
+// p2 = new  B(200,1,22)
+// console.log(p2.x, p2.z)
+
+
+// class Test {
+//     constructor(x){
+//         this.x = x
+//     };
+// };
+
+// 用一个函数来返回一个类的定义
+// class A{
+//     constructor(x){
+//         this.x = x
+//     }
+// }
+// class B extends A{}
+
+// const func = (sup) => class extends sup {}
+
+// cls = func(Test)
+// d = new cls(300); | d= new (func(Test))(300)
+// console.log(d.x)  
+
+const Seralization = Sup => class extends Sup {
+    constructor(...args){
+        console.log('Serslization ~~~~~~~~')
+        super(...args)
+        if (typeof(this.stringify)!== 'function'){
+            throw new ReferenceError('should define srtingify')
+        }
+    }
+}
+
+class Point {
+    constructor(x, y){
+        console.log('Point ------------')
+        this.x = x
+        this.y = y
+    }
+}
+
+
+class Point3D extends Seralization(Point) {
+    constructor (x,y,z){
+        console.log('Point3D +++++++++++')
+        super(x,y)
+        this.z = z
+    }
+    stringify () {}
+}
+
+p3d = new Point3D(7.8,9)

@@ -1,0 +1,141 @@
+//全局使用严格模式
+"use strict";
+
+// var  全局定义变量
+// let 局部定义
+// const 定义一个常量
+//赋值即定义，可先定义后赋值
+var c;
+let v;
+const d = 10;
+
+
+// js时弱类型语言， 当任一个类型需要加一个字符串时，返回字符串,如果加数字就返回数字;bool型相加是往数字转。
+console.log(a = 3 + 'mm', typeof(a));
+console.log(a = null + 'm', typeof(a));
+console.log(a = undefined + 'm', typeof(a));
+console.log(a = true + 'm', typeof(a));
+
+console.log(a = 'aa' + 1, typeof(a));
+console.log(a = null + 1, typeof(a));
+console.log(a = undefined + 1, typeof(a));
+console.log(a = true + 1, typeof(a));
+
+console.log(a = null + true, typeof(a));
+console.log(a = null + false, typeof(a));
+console.log(a = undefined + true, typeof(a));
+console.log(a = undefined + false, typeof(a));
+
+
+//切片
+let school = 'magedu';
+console.log(school.charAt(2));
+console.log(school[2]);
+console.log(school.toUpperCase())
+console.log(school.concat('.com'))
+console.log(school.slice(3))
+console.log(school.slice(3,5))
+console.log(school.slice(-1))
+console.log(school.slice(-2,-1))
+
+//++i:先加后用， i++：先用后加
+i = 0;
+let a = i++;
+console.log(a, i)
+console.log(a, i++)
+console.log(a, ++i)
+
+
+//解构
+a = [1,2,3]
+console.log(...a)
+
+//函数;没有关键字传参，只有位置传参
+// function 函数名（参数）{
+//     表达式
+//     return
+// }
+const sum = function _sum (x){
+    if (x == 1) return 1;
+    return x + _sum(--x);
+}
+
+console.log(sum(5))
+
+//箭头函数  是对于匿名函数转变而来
+// const mm = function (x) {
+//     return x
+// }
+// const mm = (x) => {return x}
+// console.log(mm(3))
+
+
+//类定义;this相当于self，实例本身
+// function Point(x, y){
+//     this.x = x
+//     this.y = y
+//     console.log(this)
+
+// }
+
+// var obj = new Point(3,4)
+
+//类继承  属性优先
+// function Point3D(x,y,z){
+//     Point.call(this, x, y) //需要将this实例和可变参数传进来
+//     this.z = z
+// }
+
+// var p3d = new Point3D(4,5,6)
+
+//类中静态方法 需要用类来调用,实例不能调用
+// class ss{
+//     constructor
+//     static decodeURI(){
+        
+        
+//     }
+// }
+ss.decodeURI()
+
+//constructor 是一种用于创建和初始化class创建的对象的特殊方法;相当于python的__init__初始化函数
+class Polygon {
+    constructor() {
+      this.name = 'Polygon';
+    }
+  }
+  
+  const poly1 = new Polygon();
+  
+  console.log(poly1.name);
+
+
+//关于 this 
+var school = {
+    name : 'magedu',
+    getNameFunc : function() {
+        console.log(this.name)
+        console.log(this)
+        return function() {
+            console.log('~~~~~~~~~~~~~~~~~~~~~~')
+            console.log(1, this === global)
+            console.log(1.5, school === this)
+            return this.name
+        }
+    }
+}
+
+console.log(2, school.getNameFunc()())
+console.log(2.1, school.getNameFunc().call(school)) //call方法接收原型参数
+console.log(2.2, school.getNameFunc().apply(school)) //apply方法需要将原型参数封装成数组；例如：（3，4）
+
+//that
+//console.log(2.3, school.getNameFunc()(school))
+
+//bind 方法 返回一个新的函数  新函数绑定了指定的this
+console.log(2.4, school.getNameFunc().bind(school))
+console.log(2.41, school.getNameFunc().bind(school)())
+
+
+
+

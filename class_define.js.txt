@@ -1,0 +1,67 @@
+
+// function Point(x,y){
+//     this.x = x
+//     this.y = y
+// }
+
+// var obj = Point(4,5)
+// console.log(typeof obj)
+
+// var obj1 = new Point(1,2)
+// console.log(typeof obj1)
+
+//新式类的定义
+class Point {
+    //构造器
+    constructor (x, y){
+        this.x = x
+        this.y = y
+    }
+
+    show () {
+        console.log(this, this.x , this.y)
+    }
+}
+
+pd = new Point(2,3)
+pd.show()
+
+//继承
+class Point3D extends Point {
+    constructor (x,y,z) {
+        //当要使用继承时，需使用suprr()函数，传入（this）实例
+        super(x,y)
+        this.z = z
+    }
+
+    //如果要覆盖父类的方法，可重新定义show方法
+    // show (){
+    //     console.log(this,  this.x, this.y, this.z)
+    // }
+}
+
+p3d = new Point3D(7,8,9)
+p3d.show()
+
+
+//老式类定义
+var school = {
+    name : 'magedu',
+    // 类的属性方法定义
+    getNameFunc : function () {
+        console.log('~~~~~~~~~~~~~~~~~~~~~~')
+        console.log(1, this.name);
+        console.log(2, this);
+        return function () {
+            console.log(3, this === global);
+            return this.name
+        }
+    }
+}
+
+console.log(5, school.getNameFunc())
+console.log(5.1, school.getNameFunc().call(school))
+console.log(5.2, school.getNameFunc().apply(school))
+
+console.log(6, school.getNameFunc().bind(school))
+console.log(6.1, school.getNameFunc().bind(school)())

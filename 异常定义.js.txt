@@ -1,0 +1,10 @@
+// thorw为抛出异常语句
+//catch对用python中extend， finally同等python
+try {
+    throw () => {}
+} catch (error){
+    console.log(typeof error)
+    console.log(error.constructor.name)
+} finally {
+    console.log("end")
+}
